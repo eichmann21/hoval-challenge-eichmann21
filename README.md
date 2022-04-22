@@ -20,7 +20,7 @@ Simple App mit Login und Übersichtsseite mit Geräten und für jedes Gerät ein
  <h2>Update 22.04.2022</h2>
  <ul>
   <li>Mock Daten werden aus JSON File geparst</li> 
-  <li>Deutsch, Englisch und Italienisch als Sprache, App erkennt automatisch welche Sprache als Systemsprache hinterlegt ist(i18n Properties)</li>
+  <li>Deutsch, Englisch und Italienisch als Sprache, App erkennt automatisch welche Sprache als Systemsprache hinterlegt ist (i18n Properties)</li>
   <li>Im Dashboard wird zuerst für 2 sek ein Ladesysmbol angezeigt bevor die Mock Daten aufbereitet werden</li>
   </ul><br>
  Für die Neuerung muss man folgende Module installieren:<br>
