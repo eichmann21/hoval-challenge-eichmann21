@@ -6,47 +6,92 @@
 
 
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { Alert, Platform, ScrollView, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { ActivityIndicator, Alert, Platform, ScrollView, StyleSheet } from 'react-native';
 import Device from '../components/Devices'
 import { Text, View } from '../components/Themed';
+import custom_data from '../data/MOCK_DATA.json'
 
 export default function Dashboard({ route, navigation }:any) {
   //const {email}=route.params;
+  const {t}=useTranslation();
 
-  var devices=[];
-  for(let i=0;i<=10;i++){
+  const [data, setData] = useState();
 
-    let x: string | undefined;
-    if(i==3 || i==7){
-      x="Störung"
+  let link="https://jsonplaceholder.typicode.com/posts";
+  let link2='https://reactnative.dev/movies.json';
+  const [isLoading, setLoading] = useState(true);
+  const display:any=[];
+
+  // const get_data=async() =>{
+  //   try {
+  //     const response = await fetch(link);
+  //     const json_data=await response.json();
+  //     setData(json_data)
+
+  //     // const response = await fetch('https://reactnative.dev/movies.json');
+  //     // const json = await response.json();
+  //     // setkey(json.movies);
+      
+          
+  //   } catch (error) {
+  //     console.error(error);
+  //   }  finally {
+  //     setLoading(false);
+
+  //   }
+
+  // }
+
+  // useEffect(() => {
+  //   get_data();
+  // }, []);
+
+  setTimeout(() => {
+    setLoading(false);
+  }, 2000);
+
+if(isLoading==false){
+  var data_filter = custom_data.filter( (element:any) => element.value >="60")
+const map_data=data_filter.map((data:any)=>{
+  
+    let disturbance;
+
+    if(data.disturbance==true){
+      disturbance=t('device_detail.disturbance_false');
     }else{
-      x="keine Störung"
+      disturbance=t('device_detail.disturbance_true');
     }
-    devices.push(
-    <Device 
-    key={i} 
-    id={i} 
-    name={"test"+i} 
-    wert={i+"°C"} 
-    zustand={x}
-    last_update="x" 
-    onPress={() =>             
-      navigation.navigate("DeviceDetail",{
-      name:"test"+i,
-      itemId:i,
-      warning:x,
-    })
-  }
-    />)
-  }
+
+    display.push(
+      <Device 
+        key={data.id} 
+        id={data.id} 
+        name={data.device_name} 
+        wert={data.value+"°C"} 
+        zustand={disturbance}
+        last_update={convert_timestamp(data.last_update)} 
+        onPress={() =>             
+          navigation.navigate("DeviceDetail",{
+          name:data.device_name,
+          itemId:data.id,
+          warning:"keine Störung",
+        })
+      }
+        />
+    )
+}
+);
+}
   return (
-    <ScrollView  contentContainerStyle={styles.container}>
-      {devices}
+    <ScrollView  contentContainerStyle={isLoading==true ? styles.loading:styles.container}>
+    {isLoading==true ? <ActivityIndicator size="large" color="red" /> :  display} 
       {/*Use a light status bar on iOS to account for the black space above the modal */}
       <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
     </ScrollView >
   );
+
 }
 
 
@@ -60,6 +105,12 @@ const styles = StyleSheet.create({
     backgroundColor:"#d9dbde",
     
   },
+  loading:{
+    flex:1,
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'center'
+  },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
@@ -70,3 +121,10 @@ const styles = StyleSheet.create({
     width: '80%',
   },
 });
+function convert_timestamp(last_update: any) {
+  var number=parseInt(last_update);
+  var d=new Date(number);
+  var formatted = d.toLocaleDateString()+"-"+d.toLocaleTimeString();
+  return formatted;
+}
+

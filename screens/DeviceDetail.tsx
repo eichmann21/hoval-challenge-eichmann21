@@ -5,6 +5,7 @@
 
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Alert, Button, Platform, Pressable, StyleSheet, ToastAndroid } from 'react-native';
 import { initialWindowMetrics } from 'react-native-safe-area-context';
 import { Text, View } from '../components/Themed';
@@ -14,11 +15,20 @@ export default function ModalScreen({ route }: any) {
   const { name, itemId, warning } = route.params;
   const [textValue, setTextvalue] = useState('');
   const [buttonStoerung, setbuttonStoerung] = useState(false);
+  const {t}=useTranslation();
 
-  const [pressable_text_light, setpressable_text_light] = useState('Licht ausschalten');
-  const [pressable_text_window, setpressable_text_window] = useState('Fenster öffnen');
+  let light_off=t('device_detail.light_off');
+  let light_on=t('device_detail.light_on');
 
-  if (JSON.stringify(warning) == '"keine Störung"') {
+  let window_close=t('device_detail.window_close');
+  let window_open=t('device_detail.window_open');
+
+  let disturbance_false=t('device_detail.disturbance_false');
+
+  const [pressable_text_light, setpressable_text_light] = useState(light_off);
+  const [pressable_text_window, setpressable_text_window] = useState(window_open);
+
+  if (JSON.stringify(warning) == disturbance_false) {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>{JSON.stringify(name)}</Text>
@@ -29,25 +39,25 @@ export default function ModalScreen({ route }: any) {
           direction:"rtl",
         }}>
           <Pressable key="light" onPress={() => {
-            if (pressable_text_light == "Licht ausschalten") {
-              ToastAndroid.show("Licht wird ausgeschaltet", ToastAndroid.SHORT)
-              setpressable_text_light("Licht einschalten")
+            if (pressable_text_light == light_off) {
+              ToastAndroid.show(t('device_detail.light_message_off'), ToastAndroid.SHORT)
+              setpressable_text_light(light_on)
             } else {
-              ToastAndroid.show("Licht wird eingeschaltet", ToastAndroid.SHORT)
-              setpressable_text_light("Licht ausschalten")
+              ToastAndroid.show(t('device_detail.light_message_on'), ToastAndroid.SHORT)
+              setpressable_text_light(light_off)
             }
 
-          }} onLongPress={()=>{ToastAndroid.show("Licht steuern", ToastAndroid.SHORT)}}>
+          }} onLongPress={()=>{ToastAndroid.show(t('device_detail.light_long_press'), ToastAndroid.SHORT)}}>
             <Text style={styles.custom_pressable_light}>{pressable_text_light}</Text>
           </Pressable>
 
           <Pressable key="window" onPress={() => {
-            if (pressable_text_window == "Fenster öffnen") {
-              ToastAndroid.show("Fenster wird geöffnet", ToastAndroid.SHORT)
-              setpressable_text_window("Fenster schließen")
+            if (pressable_text_window == window_open) {
+              ToastAndroid.show(t('device_detail.window_message_open'), ToastAndroid.SHORT)
+              setpressable_text_window(window_close)
             } else {
-              ToastAndroid.show("Fenster wird geschlossen", ToastAndroid.SHORT)
-              setpressable_text_window("Fenster öffnen")
+              ToastAndroid.show(t('device_detail.window_message_close'), ToastAndroid.SHORT)
+              setpressable_text_window(window_open)
             }
 
           }}>
@@ -64,10 +74,10 @@ export default function ModalScreen({ route }: any) {
         <Button onPress={() => {
 
           var time = new Date(Date.now());
-          setTextvalue("Störung wurde am:" + time.toDateString() + " um " + time.toTimeString() + "quittiert!");
+          setTextvalue(t('device_detail.disturbance_msg_1') + time.toLocaleDateString() + " "+t('device_detail.disturbance_msg_2')+" "+ time.toLocaleTimeString()+" "+ t('device_detail.disturbance_msg_3'));
           setbuttonStoerung(true);
 
-        }} title="Störung Quittieren" disabled={buttonStoerung}></Button>
+        }} title={t('device_detail.button_title')} disabled={buttonStoerung}></Button>
 
         <Text style={styles.title}>{textValue}</Text>
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
@@ -76,25 +86,25 @@ export default function ModalScreen({ route }: any) {
           direction:"rtl",
         }}>
           <Pressable key="light" onPress={() => {
-            if (pressable_text_light == "Licht ausschalten") {
-              ToastAndroid.show("Licht wird ausgeschaltet", ToastAndroid.SHORT)
-              setpressable_text_light("Licht einschalten")
+            if (pressable_text_light == light_off) {
+              ToastAndroid.show(t('device_detail.light_message_off'), ToastAndroid.SHORT)
+              setpressable_text_light(light_on)
             } else {
-              ToastAndroid.show("Licht wird eingeschaltet", ToastAndroid.SHORT)
-              setpressable_text_light("Licht ausschalten")
+              ToastAndroid.show(t('device_detail.light_message_on'), ToastAndroid.SHORT)
+              setpressable_text_light(light_off)
             }
 
-          }} onLongPress={()=>{ToastAndroid.show("Licht steuern", ToastAndroid.SHORT)}}>
+          }} onLongPress={()=>{ToastAndroid.show(t('device_detail.light_long_press'), ToastAndroid.SHORT)}}>
             <Text style={styles.custom_pressable_light}>{pressable_text_light}</Text>
           </Pressable>
 
           <Pressable key="window" onPress={() => {
-            if (pressable_text_window == "Fenster öffnen") {
-              ToastAndroid.show("Fenster wird geöffnet", ToastAndroid.SHORT)
-              setpressable_text_window("Fenster schließen")
+            if (pressable_text_window == window_open) {
+              ToastAndroid.show(t('device_detail.window_message_open'), ToastAndroid.SHORT)
+              setpressable_text_window(window_close)
             } else {
-              ToastAndroid.show("Fenster wird geschlossen", ToastAndroid.SHORT)
-              setpressable_text_window("Fenster öffnen")
+              ToastAndroid.show(t('device_detail.window_message_close'), ToastAndroid.SHORT)
+              setpressable_text_window(window_open)
             }
 
           }}>

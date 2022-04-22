@@ -9,7 +9,7 @@ import { Text, View } from '../components/Themed';
 import Colors from '../constants/Colors';
 import React, { useState, useEffect } from 'react';
 import { CommonActions } from '@react-navigation/native';
-
+import { useTranslation } from 'react-i18next';
 
 
 
@@ -18,20 +18,20 @@ export default function LoginScreen({ navigation }: any) {
 
   const [isEmail, setEmail] = useState('');
   const [isPwd, setPwd] = useState('');
-
+  const  {t}  = useTranslation();
 
   return (
     <View style={(styles.container)}>
-      <Text style={styles.title}>Login</Text>
+      <Text style={styles.title}>{t('login.header')}</Text>
       <TextInput
         style={styles.input}
-        placeholder="email"
+        placeholder={t('login.placeholder_email')}
         onChangeText={newEmail => setEmail(newEmail)}
         autoCapitalize="none"
       />
       <TextInput
         style={styles.input}
-        placeholder="password"
+        placeholder={t('login.placeholder_pwd')}
         secureTextEntry={true}
         onChangeText={newPwd => setPwd(newPwd)}
       />
@@ -59,10 +59,10 @@ export default function LoginScreen({ navigation }: any) {
               })
             )
         }else{
-          alert("Falsche E-Mail Adresse oder Passwort")
+          alert(t('login.error_login'))
         }
       }}
-        title="Login"
+        title={t('login.do_login_button')}
         color="red"
         accessibilityLabel="" ></Button>
     </View>

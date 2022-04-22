@@ -21,6 +21,9 @@ import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../typ
 import LinkingConfiguration from './LinkingConfiguration';
 import Dashboard from '../screens/Dashboard';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useTranslation } from 'react-i18next';
+import  '../lang/i18n';
+
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -39,10 +42,13 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
+
+  const  {t}  = useTranslation();
+
   return (
     <Stack.Navigator>
 
-      <Stack.Screen name="Welcome" component={Welcome} options={{ title: 'Hoval Demo' }} />
+      <Stack.Screen name="Welcome" component={Welcome} options={{ title: t('welcome.titel')} } />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Dashboard" component={Dashboard}
@@ -50,10 +56,11 @@ function RootNavigator() {
             headerRight: () => (
               <MaterialCommunityIcons name="message-text" size={24} color="black" />
             ),
+            title: t('dashboard.titel'),
           }} />
         <Stack.Screen name="DeviceDetail" component={DeviceDetail} />
       </Stack.Group>
-      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Login" component={Login} options={{ title: t('login.titel')} }/>
 
     </Stack.Navigator>
   );
