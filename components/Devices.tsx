@@ -7,6 +7,8 @@
 import React ,{Component} from "react";
 import { View, Text, StyleSheet, NativeSyntheticEvent, NativeTouchEvent, TouchableOpacity } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
+import { useTranslation } from "react-i18next";
+import { t } from "i18next";
 
 /**
  * Interface für eigene Namen
@@ -25,7 +27,7 @@ export default class Devices  extends Component <Device> {
     render() { 
 
         let style_zustand;
-        if(this.props.zustand!="Störung"){
+        if(this.props.zustand!=t('component_devices.disturbance_true')){
             style_zustand=styles.state1
         }else{
             style_zustand=styles.state2
@@ -37,9 +39,9 @@ export default class Devices  extends Component <Device> {
         <View style={styles.rectangle}>
             <Text style={styles.heading}>{this.props.name}</Text>
             <AntDesign name="home" size={40} color="black" />
-            <Text style={styles.data}>Aktueller Wert: {this.props.wert}</Text>
+            <Text style={styles.data}>{t('component_devices.aktueller_wert')} {this.props.wert}</Text>
             <Text style={style_zustand}>{this.props.zustand}</Text> 
-            <Text style={styles.update}>Letztes Update:{this.props.last_update}</Text> 
+            <Text style={styles.update}>{t('component_devices.letztes_update')}{this.props.last_update}</Text> 
 
         </View> 
         </TouchableOpacity>
@@ -50,7 +52,7 @@ export default class Devices  extends Component <Device> {
   const styles = StyleSheet.create({
     rectangle: {
       borderWidth:1,
-      width:200,
+      width:300,
       height:200,
       borderRadius:15,
       backgroundColor:"white",
