@@ -1,0 +1,43 @@
+{
+    "welcome": {
+        "login_button": "Alla pagina di accesso",
+        "header": "Benvenuto",
+        "titel": "Hoval Demo App",
+        "select_language": "Seleziona la lingua"
+    },
+    "login": {
+        "titel": "Hoval Demo App - Accesso",
+        "header": "Accesso",
+        "placeholder_email": "email",
+        "placeholder_pwd": "password",
+        "do_login_button": "Entrare",
+        "error_login": "Indirizzo e-mail o password errati"
+    },
+    "dashboard": {
+        "titel": "Hoval Demo App - Dashboard"
+    },
+    "device_detail": {
+        "titel": "Hoval Demo App - Dettaglio del dispositivo",
+        "disturbance_false": "Nessun difetto",
+        "disturbance_true": "Malfunzionamento",
+        "light_off": "Spegnere la luce",
+        "light_on": "Accendere la luce",
+        "light_message_on": "La luce è accesa",
+        "light_message_off": "La luce è spenta",
+        "light_long_press": "Luce di controllo",
+        "window_open": "Aprire la finestra",
+        "window_close": "Chiudere la finestra",
+        "window_message_open": "La finestra si apre",
+        "window_message_close": "La finestra è chiusa",
+        "disturbance_msg_1": "Il malfunzionamento è stato rilevato su:",
+        "disturbance_msg_2": "su",
+        "disturbance_msg_3": "riconosciuto!",
+        "button_title": "Riconoscere l'errore"
+    },
+
+    "component_devices":{
+        "disturbance_true": "Malfunzionamento",
+        "aktueller_wert": "Valore attuale:",
+        "letztes_update": "Ultimo aggiornamento:"
+    }
+}

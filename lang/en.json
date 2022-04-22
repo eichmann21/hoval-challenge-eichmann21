@@ -1,0 +1,43 @@
+{
+   "welcome": {
+      "login_button": "Login",
+      "header": "Welcome",
+      "titel": "Hoval Demo Application",
+      "select_language": "Please select language"
+   },
+   "login": {
+      "titel": "Hoval Demo Application - Login",
+      "header": "Login",
+      "placeholder_email": "email",
+      "placeholder_pwd": "password",
+      "do_login_button": "Login",
+      "error_login": "Wrong E-Mail or Password"
+   },
+   "dashboard": {
+      "titel": "Hoval Demo Application - Dashboard"
+   },
+   "device_detail": {
+      "titel": "Hoval Demo Application - Device Detail",
+      "disturbance_false": "no disturbance",
+      "disturbance_true": "disturbance",
+      "light_off": "turn light off",
+      "light_on": "turn light on",
+      "light_message_on": "turning light on",
+      "light_message_off": "turning light off",
+      "light_long_press": "control light",
+      "window_open": "open window",
+      "window_close": "close window",
+      "window_message_open": "Window will be openend",
+      "window_message_close": "Window will be closed",
+      "disturbance_msg_1": "Disturbance was closed at",
+      "disturbance_msg_2": "",
+      "disturbance_msg_3": "",
+      "button_title": "Acknowledge disturbance"
+   },
+
+   "component_devices":{
+      "disturbance_true": "Disturbance",
+      "aktueller_wert": "Current Value:",
+      "letztes_update": "Last Update:"
+  }
+}

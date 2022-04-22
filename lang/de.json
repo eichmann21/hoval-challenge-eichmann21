@@ -1,0 +1,43 @@
+{
+    "welcome": {
+        "login_button": "Zur Login Seite",
+        "header": "Willkommen",
+        "titel": "Hoval Demo App",
+        "select_language": "Bitte Sprache auswählen"
+    },
+    "login": {
+        "titel": "Hoval Demo App - Login",
+        "header": "Login",
+        "placeholder_email": "email",
+        "placeholder_pwd": "password",
+        "do_login_button": "Anmelden",
+        "error_login": "Falsche E-Mail Adresse oder Passwort"
+    },
+    "dashboard": {
+        "titel": "Hoval Demo App - Dashboard"
+    },
+    "device_detail": {
+        "titel": "Hoval Demo App - Device Detail",
+        "disturbance_false": "keine Störung",
+        "disturbance_true": "Störung",
+        "light_off": "Licht ausschalten",
+        "light_on": "Licht einschalten",
+        "light_message_on": "Licht wird eingeschaltet",
+        "light_message_off": "Licht wird ausgeschaltet",
+        "light_long_press": "Licht steuern",
+        "window_open": "Fenster öffnen",
+        "window_close": "Fenster schließen",
+        "window_message_open": "Fenster wird geöffnet",
+        "window_message_close": "Fenster wird geschlossen",
+        "disturbance_msg_1": "Störung wurde am:",
+        "disturbance_msg_2": "um",
+        "disturbance_msg_3": "quittiert!",
+        "button_title": "Störung quittieren"
+    },
+
+    "component_devices":{
+        "disturbance_true": "Störung",
+        "aktueller_wert": "Aktueller Wert:",
+        "letztes_update": "Letztes Update:"
+    }
+}
